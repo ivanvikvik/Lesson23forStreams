@@ -3,9 +3,15 @@ import java.io.*;
 public class BinaryWorker {
     public static void write(String fileName) {
         OutputStream stream = null;
+//        DataOutputStream stream = null;
 
         try {
-            stream = new FileOutputStream(fileName);
+            stream = new BufferedOutputStream(new FileOutputStream(fileName));
+//            stream =
+//                    new DataOutputStream(
+//                            new BufferedOutputStream(
+//                                    new FileOutputStream(fileName)));
+
 
             for (int i = 256; i < 356; i++) {
                 stream.write(i);
@@ -19,7 +25,7 @@ public class BinaryWorker {
             if (stream != null) {
                 try {
                     stream.close();
-                }catch(IOException exception) {
+                } catch (IOException exception) {
                     System.out.println(exception);
                 }
             }
@@ -31,11 +37,11 @@ public class BinaryWorker {
         StringBuilder builder = new StringBuilder();
 
         try {
-            stream = new FileInputStream(fileName);
+            stream = new BufferedInputStream(new FileInputStream(fileName));
 
             int num;
 
-            while((num = stream.read()) != -1) {
+            while ((num = stream.read()) != -1) {
                 builder.append(num).append(" ");
             }
 
@@ -45,7 +51,7 @@ public class BinaryWorker {
             if (stream != null) {
                 try {
                     stream.close();
-                }catch(IOException exception) {
+                } catch (IOException exception) {
                     System.out.println(exception);
                 }
             }

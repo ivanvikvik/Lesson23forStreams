@@ -5,7 +5,7 @@ public class CharacterWorker {
         Writer stream = null;
 
         try {
-            stream = new FileWriter(fileName);
+            stream = new BufferedWriter(new FileWriter(fileName));
 
             for (int i = 256; i < 356; i++) {
                 stream.write(i);
@@ -31,7 +31,7 @@ public class CharacterWorker {
         StringBuilder builder = new StringBuilder();
 
         try {
-            stream = new FileReader(fileName);
+            stream = new BufferedReader(new FileReader(fileName));
 
             int num;
 
